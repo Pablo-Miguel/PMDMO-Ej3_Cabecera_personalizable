@@ -1,6 +1,6 @@
-<img *ngIf="!desaparecer" src="{{direccion}}"/>
-<img *ngIf="!desaparecer" src="assets/imgs/logo1.png" #imgjs/>
 <button (click)="cambiarDirAngular()">Modo Angular</button>
 <button (click)="cambiarDirJs()">Modo Js</button>
-<button *ngIf="!desaparecer" (click)="cambiarDesaparecer()">Desaparecer</button>
-<button *ngIf="desaparecer" (click)="cambiarDesaparecer()">Aparecer</button>
+<button (click)="cambiarDesaparecer()">{{texto}}</button>
+<br/>
+<img *ngIf="!desaparecer" src="{{direccion}}"/>
+<img *ngIf="!desaparecer" src="assets/imgs/logo1.png" #imgjs/>

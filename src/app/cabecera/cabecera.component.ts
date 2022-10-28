@@ -8,12 +8,14 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 export class CabeceraComponent implements OnInit {
 
   direccion: String;
+  texto: String;
   desaparecer: Boolean;
   angular: Boolean;
   js: Boolean;
 
   constructor() { 
-    this.direccion = "assets/imgs/logo1.png" 
+    this.direccion = "assets/imgs/logo1.png";
+    this.texto = "Ocultar";
     this.desaparecer = false;
     this.angular = false;
     this.js = false;
@@ -46,5 +48,12 @@ export class CabeceraComponent implements OnInit {
 
   cambiarDesaparecer() {
     this.desaparecer = !this.desaparecer;
+
+    if(this.desaparecer){
+      this.texto = "Mostrar";
+    } else{
+      this.texto = "Ocultar";
+    }
+
   }
 }
