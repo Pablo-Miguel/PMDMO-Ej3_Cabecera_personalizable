@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-cabecera',
@@ -7,18 +7,22 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class CabeceraComponent implements OnInit {
 
-  direccion: String;
+  @Output() cambiarAngular = new EventEmitter<String>();
+  @Output() cambiarJs = new EventEmitter<String>();
+  @Output() desaparecerOutput = new EventEmitter<Boolean>();
+
   texto: String;
   desaparecer: Boolean;
   angular: Boolean;
   js: Boolean;
 
   constructor() { 
-    this.direccion = "assets/imgs/logo1.png";
+    
     this.texto = "Ocultar";
     this.desaparecer = false;
     this.angular = false;
     this.js = false;
+    
   }
 
   ngOnInit(): void {
@@ -26,10 +30,10 @@ export class CabeceraComponent implements OnInit {
 
   cambiarDirAngular() {
     if(!this.angular){
-      this.direccion = "assets/imgs/logo2.png";
+      this.cambiarAngular.emit("assets/imgs/logo2.png");
     }
     else {
-      this.direccion = "assets/imgs/logo1.png";
+      this.cambiarAngular.emit("assets/imgs/logo1.png");
     }
     this.angular = !this.angular;
   }
@@ -38,16 +42,18 @@ export class CabeceraComponent implements OnInit {
 
   cambiarDirJs() {
     if(!this.js){
-      this.imgDOM.nativeElement.src="assets/imgs/logo2.png";
+      this.cambiarJs.emit("assets/imgs/logo2.png");
     }
     else {
-      this.imgDOM.nativeElement.src="assets/imgs/logo1.png";
+      this.cambiarJs.emit("assets/imgs/logo1.png");
     }
     this.js = !this.js;
   }
 
   cambiarDesaparecer() {
     this.desaparecer = !this.desaparecer;
+
+    this.desaparecerOutput.emit(this.desaparecer);
 
     if(this.desaparecer){
       this.texto = "Mostrar";

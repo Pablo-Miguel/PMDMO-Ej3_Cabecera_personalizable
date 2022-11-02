@@ -1,1 +1,8 @@
-<app-cabecera></app-cabecera>
+<app-cabecera
+  (cambiarAngular)="cambiarDirAngular($event)"
+  (cambiarJs)="cambiarDirJs($event)"
+  (desaparecerOutput)="cambiarDesaparecer($event)"
+>
+  <img id="imgAng" *ngIf="!desaparecer" [src]="direccion" />
+  <img id="imgJs" *ngIf="!desaparecer" src="assets/imgs/logo1.png" #imgjs />
+</app-cabecera>
